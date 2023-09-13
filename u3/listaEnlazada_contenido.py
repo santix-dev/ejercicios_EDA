@@ -1,6 +1,6 @@
 from nodo import Nodo
 
-class Lista_link():
+class Lista_link_cont():
 	"""docstring for Lista"""
 	__cant=0
 	__comienzo=None
@@ -9,19 +9,20 @@ class Lista_link():
 		self.__cant=0
 	def insertar(self,objeto):
 		nuevo=Nodo(objeto)
-		if self.__comienzo==None:
+		if self.__comienzo==None or objeto<=self.__comienzo.objeto():
 			nuevo.setSiguiente(self.__comienzo)
 			self.__comienzo=nuevo
 		else:
 			aux=self.__comienzo
-			anterior=None
-			while aux.getSiguiente()!=None:
+			anterior=self.__comienzo
+			flag=False
+			while aux!=None and not flag:
 				if aux.objeto()<objeto:
 					anterior=aux#aca quede
 					aux=aux.getSiguiente()
-				else:
-					anterior.setSiguiente(nuevo)
-					nuevo.setSiguiente(aux)
+				else: flag=True
+			anterior.setSiguiente(nuevo)
+			nuevo.setSiguiente(aux)
 		self.__cant+=1
 	def suprimir(self,posicion):
 		if not (posicion>=1 and posicion<=self.__cant):
@@ -70,22 +71,17 @@ class Lista_link():
 	
 
 if __name__=="__main__":
-	lista=Lista_link()
-	lista.insertar("a",1)
-	lista.insertar("b",2)
-	lista.insertar("c",3)
-	lista.insertar("d",4)
+	lista=Lista_link_cont()
+	lista.insertar("molina marcos")
+	lista.insertar("gimenez santiago")
+	lista.insertar("garro guillermo")
+	lista.insertar("b")
+	lista.insertar("a")
+	lista.insertar("d")
+	lista.insertar("a")
 	lista.mostrar()
-	lista.buscar("b")
-	lista.insertar("e",5)
+	a=lista.buscar("gimenez santiago")
+	print(a)
+	lista.suprimir(a)
 	lista.mostrar()
-	lista.buscar("e")
-	lista.insertar("ab",2)
-	lista.buscar("b")
-	lista.buscar("e")
-	lista.mostrar()
-	lista.recuperar(2)
-	lista.recuperar(6)
-	lista.suprimir(6)
-	lista.mostrar()
-		
+
