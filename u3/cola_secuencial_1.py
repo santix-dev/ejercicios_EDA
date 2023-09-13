@@ -31,10 +31,13 @@ class Cola_sec():
         return self.__primero>0 and self.__ultimo==self.__tamanio-1
     def ordenar(self):
         cantidad=self.__ultimo-self.__primero
-        for i in range(cantidad):
+        for i in range(cantidad+1):
+            print(self.__ultimo-self.__primero,cantidad)
             self.__arreglo[i]=self.__arreglo[i+self.__primero]
+            print(f"i: {i}    num:  {self.__arreglo[self.__primero+i]}")
+            print(f"i: {i}    num:  {self.__arreglo[i]}")
         self.__primero=0
-        self.__ultimo=cantidad-1
+        self.__ultimo=cantidad
     def lleno(self):
         return self.__ultimo+1==self.__tamanio and self.__primero==0
     def eliminar(self):
@@ -57,7 +60,7 @@ if __name__=="__main__":
     cola.mostrar_cola()
     cola.insertar(5)
     cola.mostrar_cola()
-    cola.insertar(5)
+    cola.insertar(5)#
     cola.mostrar_cola()
     cola.eliminar()
     cola.mostrar_cola()
