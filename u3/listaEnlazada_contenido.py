@@ -16,11 +16,14 @@ class Lista_link_cont():
 			aux=self.__comienzo
 			anterior=self.__comienzo
 			flag=False
-			while aux!=None and not flag:
-				if aux.objeto()<objeto:
-					anterior=aux#aca quede
-					aux=aux.getSiguiente()
-				else: flag=True
+			# while aux!=None and not flag:
+			# 	if aux.objeto()<objeto:
+			# 		anterior=aux#aca quede
+			# 		aux=aux.getSiguiente()
+			# 	else: flag=True
+			while aux!=None and aux.objeto()<objeto:
+				anterior=aux#aca quede
+				aux=aux.getSiguiente()
 			anterior.setSiguiente(nuevo)
 			nuevo.setSiguiente(aux)
 		self.__cant+=1

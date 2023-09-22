@@ -7,7 +7,7 @@ class Lista_secuencial_cont:
     def __init__(self,tamanio):
         self.__tamanio=tamanio
         self.__arreglo=np.empty(tamanio,dtype=int)
-        self.__ultimo=0
+        self.__ultimo=0 #apunta al ultimo disponible
     def insertar(self,objeto):
         if self.llena():
             print("Lista llena")
@@ -17,11 +17,13 @@ class Lista_secuencial_cont:
         else:
             i=0
             flag=False
-            while i<self.__ultimo and not flag:
-                if objeto<self.__arreglo[i]:
-                    flag=True
-                else:
-                    i+=1
+            # while i<self.__ultimo and not flag:
+            #     if objeto<self.__arreglo[i]:
+            #         flag=True
+            #     else:
+            #         i+=1
+            while i<self.__ultimo and objeto>=self.__arreglo[i]:
+                i+=1
             if i<self.__ultimo:
                 for j in range(self.__ultimo,i,-1):
                     self.__arreglo[j]=self.__arreglo[j-1]
